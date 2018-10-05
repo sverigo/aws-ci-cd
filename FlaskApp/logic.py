@@ -33,7 +33,7 @@ answers_dict = {
 all_routes = database.list_routes()
 all_airports = database.list_airports()
 airport_dict = {
-    airport["local_code"] : {"name" : (airport['name'])}
+    airport["local_code"] : {"en" : (airport['name']), "jp" : (airport['jp_name'])}
     for airport in all_airports
 }
 
@@ -97,7 +97,7 @@ def get_challenge():
 
 def route_csv_to_airports(route_csv):
     "Find airports by route csv"
-    airports = [airport_dict[route]['name'] for route in route_csv.split(",")]
+    airports = [airport_dict[route] for route in route_csv.split(",")]
     return airports
 
 def route_csv_to_image(route_csv):
